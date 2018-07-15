@@ -1,0 +1,24 @@
+{
+  "todo-example": [
+    {
+      "id": "1",
+      "title": "kalem",
+      "isComplete":true
+    },
+    {
+        "id":2,
+        "title":"Defter",
+        "isComplete":true
+    },
+    {
+        "id":3,
+        "title":"Silgi",
+        "isComplete":false
+    },
+    {
+        "id":4,
+        "title":"Çanta",
+        "isComplete":false
+    }
+  ]
+}

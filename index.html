@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="tr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>www.TodoList.com</title>
+	<link rel="stylesheet" type="text/css" href="App.css">
+	<!-- development version, includes helpful console warnings -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="wrapper">
+
+			<div class="content" id="app">
+				<p v-if="isLoading">Loading ...</p>
+				<div v-if="!isLoading">
+					<div class="header">
+						<h4 v-if="!isLoggedIn">{{ hi + ' ' + newTodoText }} Guest</h4>
+						<h4 v-if="isLoggedIn">{{ hi + ' ' + username }}</h4>
+					</div>
+
+					<div>
+						<div class="todo type1">
+							<form @submit.prevent="addNewTodo" class="input-wrapper">
+								<input v-model="newTodoText" id="new-todo" type="text" class="add-todo" placeholder="What needs to add shoppings"></input>
+							</form>
+						</div>
+						<button @click="addNewTodo" class="add-btn"></button>
+					</div>
+
+					<div class="todo-list type1">
+						<ul>
+							<!--todo-item component -->
+							<li is="todo-item" :todos=todos></li>
+						</ul>
+						<p v-if="!todos.length" class="todo type1" style="text-align:center">
+							No todos left!
+							<br/>+
+							<br/>New todo
+						</p>
+					</div>
+
+					<div class="todo-filter type1">
+						<div class="left">
+							<span> {{2}} items left </span>
+						</div>
+						<div class="right" id="listChanger">
+							<ul>
+								<li>
+									<span v-on:click="getAllTodo" class="active">All({{4}})</span>
+								</li>
+								<li>
+									<span v-on:click="getCompletedTodo"> Completed({{2}})</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="copyright">
+						&copy;
+						<a href="https://vebze.com" target="_blank">Vebze</a> 2018.
+						<hr className="form" />
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="index.js"></script>
+</body>
+
+</html>
